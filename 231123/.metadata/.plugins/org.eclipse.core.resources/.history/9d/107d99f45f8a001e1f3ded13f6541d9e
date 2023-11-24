@@ -1,0 +1,25 @@
+package teste;
+
+import java.sql.Connection;
+
+import conexao.Conexao;
+import dao.EnderecoDAO;
+import model.Endereco;
+
+public class ProgramaInserir {
+
+	public static void main(String[] args) {
+
+		Connection con = Conexao.abrirConexao();
+
+		Endereco endereco = new Endereco();
+		EnderecoDAO enderecodao = new EnderecoDAO(con);////////
+		
+		try {
+			
+		}
+		
+		Conexao.fecharConexao(con);
+	}
+
+}

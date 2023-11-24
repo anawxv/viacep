@@ -1,0 +1,29 @@
+package teste;
+
+import java.sql.Connection;
+
+import javax.swing.JOptionPane;
+
+import conexao.Conexao;
+import dao.EnderecoDAO;
+import model.Endereco;
+import service.ViacepService;
+
+public class ProgramaInserir {
+
+	public static void main(String[] args) {
+
+		Connection con = Conexao.abrirConexao();
+
+		Endereco endereco = new Endereco();
+		EnderecoDAO enderecodao = new EnderecoDAO(con);////////
+		ViacepService viacepservice = new ViacepService();
+		
+		try {
+			
+			endereco = viacepservice.getEndereco(JOptionPane.showInputDialog("Digite o CEP"))
+		}
+		Conexao.fecharConexao(con);
+	}
+
+}

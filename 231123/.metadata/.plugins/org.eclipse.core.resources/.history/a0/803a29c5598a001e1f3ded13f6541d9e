@@ -1,0 +1,46 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import model.Endereco;
+
+
+public class EnderecoDAO {
+
+	
+private Connection con = null;
+
+	
+	public Connection getCon() {
+		return con;
+	}
+
+	public void setCon(Connection con) {
+		this.con = con;
+	}
+	
+	public EnderecoDAO(Connection con) {
+		setCon(con);
+	}
+	
+	public String inserir(Endereco endereco) {
+		String sql = "insert into endereco(cep, logradouro, complemento, bairro, localidade, uf, ibge, gia, ddd, siafi) values (?,?,?,?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement ps = getCon().prepareStatement(sql);
+			ps.setString(1,  endereco.getCep());
+			ps.setString(2, endereco.getLogradouro());
+			ps.setString(3, endereco.getComplemento());
+			ps.setString(4, endereco.getComplemento());
+			if (ps.executeUpdate() > 0) {
+				return "Inserido com sucesso";
+			} else {
+				return "Erro inserir";
+			}
+		} catch (SQLException e) {
+			return e.getMessage();
+		}
+	}
+	
+}

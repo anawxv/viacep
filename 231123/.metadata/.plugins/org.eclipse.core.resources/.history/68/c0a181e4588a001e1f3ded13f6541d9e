@@ -1,0 +1,47 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.escola.model.Professor;
+
+
+public class EnderecoDAO {
+
+	
+private Connection con = null;
+
+	
+	public Connection getCon() {
+		return con;
+	}
+
+	public void setCon(Connection con) {
+		this.con = con;
+	}
+	
+	public ProfessorDAO(Connection con) {
+		setCon(con);
+	}
+	
+	public String inserir(Professor professor) {
+		String sql = "insert into professor(nome, curso, salario) values (?,?,?)";
+		try {
+			PreparedStatement ps = getCon().prepareStatement(sql);
+			ps.setString(1,  professor.getNome());
+			ps.setString(2, professor.getCurso());
+			ps.setDouble(3, professor.getSalario());
+			if (ps.executeUpdate() > 0) {
+				return "Inserido com sucesso";
+			} else {
+				return "Erro inserir";
+			}
+		} catch (SQLException e) {
+			return e.getMessage();
+		}
+	}
+	
+}

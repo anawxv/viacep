@@ -1,0 +1,16 @@
+package teste;
+
+import java.sql.Connection;
+
+import conexao.Conexao;
+import dao.EnderecoDAO;
+import model.Professor;
+
+public class ProgramaInserir {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
